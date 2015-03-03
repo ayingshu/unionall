@@ -40,7 +40,7 @@ public class ConcatResultIterator implements PeekingResultIterator {
         this.resultIterators = iterators;
     }
     
-    private ConcatResultIterator(List<PeekingResultIterator> iterators) {
+    public ConcatResultIterator(List<PeekingResultIterator> iterators) {
         this.resultIterators = null;
         this.iterators = iterators;
     }
