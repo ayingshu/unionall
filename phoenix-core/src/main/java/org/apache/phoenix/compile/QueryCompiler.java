@@ -226,10 +226,10 @@ public class QueryCompiler {
 
         List<ExpressionProjector> projectedColumns = new ArrayList<ExpressionProjector>();
         PTable tbl = createTempTableForUnionAllResultResolver(plan);
-        TableRef tableRef = new TableRef(tbl);
+     //   TableRef tableRef = new TableRef(tbl);
         for (int i=0; i<tbl.getColumns().size(); i++) {
             ProjectedColumnExpression expression = new ProjectedColumnExpression(tbl.getColumns().get(i), tbl, tbl.getColumns().get(i).getExpressionStr());
-            projectedColumns.add(new ExpressionProjector(tbl.getColumns().get(i).getName().getString(), tableRef.getTableAlias() == null ? tbl.getName().getString() : tableRef.getTableAlias(), expression, true));
+            projectedColumns.add(new ExpressionProjector(tbl.getColumns().get(i).getName().getString(), tbl.getName().getString(), expression, true));
         }
         RowProjector rowProjector = new RowProjector(projectedColumns, 100, true);
         TupleProjector tupleProjector = new TupleProjector(rowProjector);
